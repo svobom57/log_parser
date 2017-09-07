@@ -10,9 +10,8 @@ class LogParser
   end
 
   def parse
-    # Optimize read
     log_aggregator = LogAggregator.new
-    File.open(log_path, 'r').read.each_line do |line|
+    File.open(log_path, 'r').each do |line|
       entry, ip = line.strip.split(' ')
       log_aggregator.add_log(entry, ip)
     end
