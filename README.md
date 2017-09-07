@@ -31,13 +31,13 @@ bundle install
 and finally run:
 
 ```Bash
-./bin/parse_logs ./logs/webserver.log
+bin/parse_logs logs/webserver.log
 ```
 
 ### Examples
 
 ```Bash
-./bin/parse_logs ./logs/webserver.log
+bin/parse_logs logs/webserver.log
 ```
 
 ### Testing
