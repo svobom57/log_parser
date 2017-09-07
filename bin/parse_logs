@@ -1,0 +1,22 @@
+#! /usr/bin/env ruby
+
+abort 'Please supply path to log file' if ARGV.length.zero?
+
+require_relative '../lib/log_parser'
+
+log_path = ARGV.first
+log_path = if log_path[0] == '/'
+             log_path
+           else
+             File.expand_path(File.join(File.dirname(__FILE__), '..', log_path))
+           end
+
+parser = LogParser.new(log_path)
+aggregator = parser.parse
+
+puts '> Most Views'
+aggregator.group_by_views.print
+puts
+
+puts '> Most Unique Views'
+aggregator.group_by_unique_views.print
