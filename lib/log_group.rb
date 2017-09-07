@@ -7,7 +7,7 @@ end
 class ViewsLogGroup < LogGroup
   def print
     __getobj__.each do |aggregate_log_entry|
-      puts "#{aggregate_log_entry.entry} #{aggregate_log_entry.views} visits"
+      puts "#{aggregate_log_entry.url_path} #{aggregate_log_entry.views} visits"
     end
   end
 end
@@ -15,7 +15,7 @@ end
 class UniqueViewsLogGroup < LogGroup
   def print
     __getobj__.each do |aggregate_log_entry|
-      puts "#{aggregate_log_entry.entry} #{aggregate_log_entry.views} unique views"
+      puts "#{aggregate_log_entry.url_path} #{aggregate_log_entry.views} unique views"
     end
   end
 end

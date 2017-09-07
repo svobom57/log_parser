@@ -5,8 +5,8 @@ RSpec.describe LogGroup do
 
     context ViewsLogGroup do
       it 'prints the logs to STDOUT' do
-        aggr1 = double(:aggregate_log_entry, entry: '/home', views: 5)
-        aggr2 = double(:aggregate_log_entry, entry: '/products', views: 10)
+        aggr1 = double(:aggregate_log_entry, url_path: '/home', views: 5)
+        aggr2 = double(:aggregate_log_entry, url_path: '/products', views: 10)
         group = ViewsLogGroup.new([aggr1, aggr2])
 
         expect(STDOUT).to receive(:puts).with('/home 5 visits')
@@ -14,12 +14,25 @@ RSpec.describe LogGroup do
 
         group.print
       end
+
+      it 'sorts by url_path when views are the same' do
+        aggr1 = double(:aggregate_log_entry, url_path: '/c', views: 1)
+        aggr2 = double(:aggregate_log_entry, url_path: '/a', views: 1)
+        aggr3 = double(:aggregate_log_entry, url_path: '/b', views: 1)
+        group = ViewsLogGroup.new([aggr1, aggr2, aggr3])
+
+        expect(STDOUT).to receive(:puts).with('/a 1 visits')
+        expect(STDOUT).to receive(:puts).with('/b 1 visits')
+        expect(STDOUT).to receive(:puts).with('/c 1 visits')
+
+        group.print
+      end
     end
 
     context UniqueViewsLogGroup do
       it 'prints the logs to STDOUT' do
-        aggr1 = double(:aggregate_log_entry, entry: '/home', views: 5)
-        aggr2 = double(:aggregate_log_entry, entry: '/products', views: 10)
+        aggr1 = double(:aggregate_log_entry, url_path: '/home', views: 5)
+        aggr2 = double(:aggregate_log_entry, url_path: '/products', views: 10)
         group = UniqueViewsLogGroup.new([aggr1, aggr2])
 
         expect(STDOUT).to receive(:puts).with('/home 5 unique views')

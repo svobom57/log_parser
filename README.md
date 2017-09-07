@@ -51,8 +51,8 @@ Outputs:
     /home 78 visits
     
     > Most Unique Views
-    /help_page/1 23 unique views
     /contact 23 unique views
+    /help_page/1 23 unique views
     /home 23 unique views
     /index 23 unique views
     /about/2 22 unique views

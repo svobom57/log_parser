@@ -2,7 +2,14 @@ require_relative '../lib/log_group'
 
 class LogAggregator
   LogEntry = Struct.new(:entry, :ip)
-  AggregateLogEntry = Struct.new(:entry, :views)
+  AggregateLogEntry = Struct.new(:url_path, :views) do
+    def <=>(other)
+      result = (other.views <=> views)
+      return result unless result.zero?
+      url_path <=> other.url_path
+    end
+  end
+
   private_constant :LogEntry, :AggregateLogEntry
 
   attr_reader :log_entries
@@ -35,6 +42,6 @@ class LogAggregator
   private
 
   def sort_by_views(group)
-    group.sort_by { |aggregate_log_entry| -aggregate_log_entry.views }
+    group.sort { |log1, log2| log1 <=> log2 }
   end
 end

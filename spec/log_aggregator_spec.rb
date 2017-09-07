@@ -30,10 +30,10 @@ RSpec.describe LogAggregator do
 
       expect(group.length).to eq 2
 
-      expect(group.first.entry).to eq '/home'
+      expect(group.first.url_path).to eq '/home'
       expect(group.first.views).to eq 2
 
-      expect(group.last.entry).to eq '/products'
+      expect(group.last.url_path).to eq '/products'
       expect(group.last.views).to eq 1
     end
   end
@@ -55,10 +55,10 @@ RSpec.describe LogAggregator do
 
       expect(group.length).to eq 2
 
-      expect(group.first.entry).to eq '/home'
+      expect(group.first.url_path).to eq '/home'
       expect(group.first.views).to eq 1
 
-      expect(group.last.entry).to eq '/products'
+      expect(group.last.url_path).to eq '/products'
       expect(group.last.views).to eq 1
     end
   end

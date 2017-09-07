@@ -34,17 +34,17 @@ MSG
 /help_page/1 5 visits
 /home 3 visits
 /contact 2 visits
+/about 1 visits
 /about/2 1 visits
 /index 1 visits
-/about 1 visits
 
 > Most Unique Views
 /help_page/1 5 unique views
 /home 3 unique views
-/contact 1 unique views
-/about/2 1 unique views
-/index 1 unique views
 /about 1 unique views
+/about/2 1 unique views
+/contact 1 unique views
+/index 1 unique views
 MSG
            ).to_stdout
     end
