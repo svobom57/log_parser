@@ -1,7 +1,7 @@
 require_relative '../lib/log_group'
 
 class LogAggregator
-  LogEntry = Struct.new(:entry, :ip)
+  LogEntry = Struct.new(:url_path, :ip)
   AggregateLogEntry = Struct.new(:url_path, :views) do
     def <=>(other)
       result = (other.views <=> views)
